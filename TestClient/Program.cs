@@ -2,6 +2,7 @@
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TestClient
 {
@@ -23,13 +24,14 @@ namespace TestClient
                 //        "PING", "ECHO", "CLIENT"
                 //    }, available: false),
                 KeepAlive = 180,
+               SyncTimeout=10000,AsyncTimeout=10000,
                 Password = ""
             };
 
             var conn = ConnectionMultiplexer.Connect(config);
 
             IDatabase db = conn.GetDatabase();
-            db.StringSet("name","danko");
+            db.StringSet("name", string.Concat(Enumerable.Repeat("ab", 2)));
 
             Console.ReadKey();
 
