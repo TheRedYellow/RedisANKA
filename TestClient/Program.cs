@@ -24,8 +24,12 @@ namespace TestClient
                 //        "PING", "ECHO", "CLIENT"
                 //    }, available: false),
                 KeepAlive = 180,
-               SyncTimeout=10000,AsyncTimeout=10000,
-                Password = ""
+                SyncTimeout = 10000,
+                AsyncTimeout = 10000,
+                ConnectTimeout = 300000,
+              
+                Password = "",
+
             };
 
             var conn = ConnectionMultiplexer.Connect(config);
